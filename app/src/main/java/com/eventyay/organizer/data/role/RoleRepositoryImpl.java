@@ -76,4 +76,39 @@ public class RoleRepositoryImpl implements RoleRepository {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());
     }
+
+    @NonNull
+    @Override
+    public Observable<RoleInvite> updateRole(RoleInvite roleUpdate) {
+        if(!repository.isConnected()) {
+            return Observable.error(new Throwable(Constants.NO_NETWORK));
+        }
+        return roleApi
+            .updateRole(roleUpdate.getId(),roleUpdate)
+            .doOnNext(roleUpdated -> repository
+                .update(RoleInvite.class,roleUpdated)
+                .subscribe())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+
+    }
+
+    @NonNull
+    @Override
+    public Observable<RoleInvite> getRole(long roleId,boolean reload) {
+        Observable<RoleInvite> diskObservable = Observable.defer(() ->
+            repository.getItems(RoleInvite.class,RoleInvite_Table.id.eq(roleId)).take(1));
+
+        Observable<RoleInvite> networkObservable = Observable.defer(()->
+            roleApi.getRole(roleId)
+                .doOnNext(roleInvite -> repository
+                    .save(RoleInvite.class,roleInvite).subscribe()));
+
+        return repository.observableOf(RoleInvite.class)
+            .reload(reload)
+            .withDiskObservable(diskObservable)
+            .withNetworkObservable(networkObservable)
+            .build();
+
+    }
 }

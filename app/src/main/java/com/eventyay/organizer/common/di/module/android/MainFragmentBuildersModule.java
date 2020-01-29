@@ -16,6 +16,7 @@ import com.eventyay.organizer.core.orders.detail.OrderDetailFragment;
 import com.eventyay.organizer.core.orders.list.OrdersFragment;
 import com.eventyay.organizer.core.role.invite.RoleInviteFragment;
 import com.eventyay.organizer.core.role.list.RoleListFragment;
+import com.eventyay.organizer.core.role.update.UpdateRoleFragment;
 import com.eventyay.organizer.core.settings.SettingsFragment;
 import com.eventyay.organizer.core.settings.autocheckin.AutoCheckInFragment;
 import com.eventyay.organizer.core.settings.restriction.CheckInRestrictions;
@@ -100,6 +101,9 @@ public abstract class MainFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract RoleListFragment contributeRoleListFragment();
+
+    @ContributesAndroidInjector
+    abstract UpdateRoleFragment contributeUpdateRoleFragment();
 
     // Sponsor
 

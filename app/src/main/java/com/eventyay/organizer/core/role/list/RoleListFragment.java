@@ -24,10 +24,12 @@ import com.eventyay.organizer.R;
 import com.eventyay.organizer.common.mvp.view.BaseFragment;
 import com.eventyay.organizer.core.main.MainActivity;
 import com.eventyay.organizer.core.role.invite.RoleInviteFragment;
+import com.eventyay.organizer.core.role.update.UpdateRoleFragment;
 import com.eventyay.organizer.data.ContextUtils;
 import com.eventyay.organizer.data.role.RoleInvite;
 import com.eventyay.organizer.databinding.RolesFragmentBinding;
 import com.eventyay.organizer.ui.ViewUtils;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
@@ -159,10 +161,21 @@ public class RoleListFragment extends BaseFragment implements RoleListView {
                 case R.id.delete:
                     showDeleteDialog();
                     break;
+                case R.id.update:
+                    showUpdateDialog();
+                    break;
                 default:
                     return false;
             }
             return false;
+        }
+        public void showUpdateDialog() {
+            final long selectedRoleId = roleListViewModel.getSelectedRoleId();
+            if (selectedRoleId == -1)
+                return;
+            BottomSheetDialogFragment bottomSheetDialogFragment = UpdateRoleFragment.newInstance(roleListViewModel.getSelectedRoleId());
+            bottomSheetDialogFragment.show(getFragmentManager(), bottomSheetDialogFragment.getTag());
+            exitContextualMenuMode();
         }
 
         @Override

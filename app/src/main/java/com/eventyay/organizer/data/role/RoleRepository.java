@@ -10,4 +10,8 @@ public interface RoleRepository {
     Observable<RoleInvite> getRoles(long eventId, boolean forceReload);
 
     Completable deleteRole(long roleInviteId);
+
+    Observable<RoleInvite> updateRole(RoleInvite roleUpdate);
+
+    Observable<RoleInvite> getRole(long roleId,boolean forceReload);
 }

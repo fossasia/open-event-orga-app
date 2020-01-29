@@ -8,4 +8,10 @@
         android:visible="true"
         app:showAsAction="ifRoom">
     </item>
+    <item android:id="@+id/update"
+        android:title="Edit"
+        android:icon="@drawable/ic_edit"
+        android:visible="true"
+        app:showAsAction="ifRoom">
+    </item>
 </menu>

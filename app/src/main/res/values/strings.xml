@@ -420,7 +420,7 @@
     <string name="github_developers_link">https://github.com/fossasia/open-event-organizer-android/graphs/contributors</string>
     <string name="third_party_licenses">Third Party Libraries Used</string>
     <string name="event_owner_detail_organiser">Organiser</string>
-
+    <string name="email_cant_change">Email cannot be changed</string>
     <string-array name="timezones">
         <item>Africa/Abidjan</item>
         <item>Africa/Accra</item>

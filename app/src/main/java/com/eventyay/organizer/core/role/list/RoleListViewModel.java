@@ -183,4 +183,13 @@ public class RoleListViewModel extends ViewModel {
             unselectRole(role);
         }
     }
+
+    public long getSelectedRoleId() {
+        for (RoleInvite role : selectedMap.keySet()) {
+            if (selectedMap.get(role).get()) {
+                return role.getId();
+            }
+        }
+        return -1;
+    }
 }

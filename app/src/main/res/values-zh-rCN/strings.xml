@@ -420,6 +420,9 @@
     <string name="github_developers_link">https://github.com/fossasia/open-event-organizer-android/graphs/contributors</string>
     <string name="third_party_licenses">使用的第三方库</string>
     <string name="event_owner_detail_organiser">组织者</string>
+    <string name="instagram">因斯塔</string>
+    <string name="twitter">推特</string>
+    <string name="facebook">脸书</string>
 
     <string-array name="timezones">
         <item>Africa/Abidjan</item>

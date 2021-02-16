@@ -209,6 +209,7 @@ public class AttendeesFragment extends BaseFragment implements AttendeesView {
             return;
 
         searchView.setQueryHint(getString(R.string.search_placeholder));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

@@ -32,7 +32,8 @@ project.afterEvaluate {
             task "${testTaskName}Coverage" (type:JacocoReport, dependsOn: "$testTaskName") {
                 group = "Reporting"
                 description = "Generate Jacoco coverage reports on the ${sourceName.capitalize()} build."
-                classDirectories = fileTree(
+                getClassDirectories().setFrom(
+                    fileTree(
                     dir: "${project.buildDir}/intermediates/classes/${sourcePath}",
                     excludes: [
                         '**/R.class',
@@ -57,15 +58,16 @@ project.afterEvaluate {
                         '**/Generated*.*',
                         '**/dbflow/*',
                     ]
-                )
+                ))
+                classDirectories.from()
                 def coverageSourceDirs = [
                     "src/main/java",
                     "src/$productFlavorName/java",
                     "src/$buildTypeName/java"
                 ]
-                additionalSourceDirs = files(coverageSourceDirs)
-                sourceDirectories = files(coverageSourceDirs)
-                executionData = files("${project.buildDir}/jacoco/${testTaskName}.exec")
+                getAdditionalSourceDirs().setFrom( files(coverageSourceDirs))
+                getSourceDirectories().setFrom(files(coverageSourceDirs))
+                getExecutionData().setFrom(files("${project.buildDir}/jacoco/${testTaskName}.exec"))
                 reports {
                     xml.enabled = true
                     html.enabled = true

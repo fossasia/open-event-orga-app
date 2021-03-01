@@ -37,14 +37,16 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:background="@color/color_top_surface">
 
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
 
                     <include
                         android:id="@+id/form"
@@ -59,22 +61,23 @@
                     android:layout_height="@dimen/submit_button_width"
                     android:text="@string/done"/>
 
-                <FrameLayout
-                    android:layout_width="@dimen/progressbar_large"
-                    android:layout_height="@dimen/progressbar_large"
-                    android:layout_gravity="center">
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:theme="@style/AppTheme"
-                        android:visibility="gone" />
-
-                </FrameLayout>
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+            </LinearLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="@dimen/progressbar_large"
+            android:layout_height="@dimen/progressbar_large"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:theme="@style/AppTheme"
+                android:visibility="gone" />
+
+        </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

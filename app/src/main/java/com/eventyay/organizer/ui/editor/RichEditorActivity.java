@@ -113,7 +113,7 @@ public class RichEditorActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (binding.editor.getHtml().equals(description)) {
+        if (binding.editor.getHtml() == null || binding.editor.getHtml().equals(description)) {
             saveChanges(description);
             return;
         }

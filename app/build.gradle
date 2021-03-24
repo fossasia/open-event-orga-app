@@ -176,7 +176,7 @@ dependencies {
     implementation "com.takisoft.fix:preference-v7:${versions.support_lib}.0"
     //implementation "androidx.media:media:1.1.0-alpha04" // GradleIncompatible Workaround
     //implementation "androidx.legacy:legacy-support-v4:1.0.0" // GradleIncompatible Workaround
-    annotationProcessor 'androidx.annotation:annotation:1.1.0' // Required for Glide
+    annotationProcessor 'androidx.annotation:annotation:1.2.0' // Required for Glide
     playStoreImplementation "com.google.android.gms:play-services-vision:${versions.play_services_vision}"
     playStoreImplementation "com.google.android.libraries.places:places:${versions.places}"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

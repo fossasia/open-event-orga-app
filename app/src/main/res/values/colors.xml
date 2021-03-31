@@ -28,4 +28,6 @@
     <color name="tint_drawer_item_icon">#8C000000</color>
     <color name="color_drawer_item_text">#D9000000</color>
     <color name="event_state_draft">#FFF9C4</color>
+    <color name="gray87">#DEDEDE</color>
+
 </resources>

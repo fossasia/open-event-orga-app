@@ -71,7 +71,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#dedede"
+                        android:background="@color/gray87"
                         android:padding="@dimen/spacing_small"
                         android:text="@string/profile"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
@@ -175,7 +175,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#dedede"
+                        android:background="@color/gray87"
                         android:padding="@dimen/spacing_small"
                         android:text="@string/social_media_profiles"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"

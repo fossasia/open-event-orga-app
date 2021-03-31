@@ -154,6 +154,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/phone"
                     android:text="@={user.contact}"
+                    android:maxLength="10"
                     android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -41,6 +41,7 @@ import com.mikepenz.fastadapter.utils.ComparableItemListImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -57,6 +58,8 @@ public class AttendeesFragment extends BaseFragment implements AttendeesView {
     private static final int SORTBYTICKET = 1;
     private static final int SORTBYNAME = 0;
     private static final long ITEMS_PER_PAGE = 20;
+
+    private Comparator<Attendee> comparator;
 
     private Context context;
 
@@ -87,6 +90,8 @@ public class AttendeesFragment extends BaseFragment implements AttendeesView {
     private RecyclerView.AdapterDataObserver observer;
 
     private static final String FILTER_SYNC = "FILTER_SYNC";
+
+    private int sortingStrategy = 0;
 
     /**
      * Use this factory method to create a new instance of
@@ -154,9 +159,11 @@ public class AttendeesFragment extends BaseFragment implements AttendeesView {
 
     private void sortAttendees(int sortBy) {
         if (sortBy == SORTBYTICKET) {
-            ((ComparableItemListImpl<Attendee>) fastItemAdapter.getItemList()).withComparator((Attendee a1, Attendee a2) -> a1.getTicket().getType().compareTo(a2.getTicket().getType()), true);
+            sortingStrategy = SORTBYTICKET;
+            ((ComparableItemListImpl<Attendee>) fastItemAdapter.getItemList()).withComparator(comparator, true);
         } else {
-            ((ComparableItemListImpl<Attendee>) fastItemAdapter.getItemList()).withComparator((Attendee a1, Attendee a2) -> a1.getFirstname().compareTo(a2.getFirstname()), true);
+            sortingStrategy = SORTBYNAME;
+            ((ComparableItemListImpl<Attendee>) fastItemAdapter.getItemList()).withComparator(comparator, true);
         }
         fastItemAdapter.setNewList(attendeeList, true);
         binding.setVariable(BR.attendees, attendeeList);
@@ -224,7 +231,20 @@ public class AttendeesFragment extends BaseFragment implements AttendeesView {
     }
 
     private void setupRecyclerView() {
-        fastItemAdapter = new ItemAdapter<>();
+
+        comparator = (o1, o2) -> {
+            if (sortingStrategy == SORTBYNAME) {
+                return o1.getFirstname().compareTo(o2.getFirstname());
+            } else if (sortingStrategy == SORTBYTICKET) {
+                return o1.getTicket().getType().compareTo(o2.getTicket().getType());
+            }
+            return 0;
+        };
+
+        final ComparableItemListImpl<Attendee> itemListImpl = new ComparableItemListImpl<>(comparator);
+
+        fastItemAdapter = new ItemAdapter<>(itemListImpl);
+
         fastItemAdapter.getItemFilter().setFilterPredicate(
             (attendee, query) -> {
                 if (query == null)

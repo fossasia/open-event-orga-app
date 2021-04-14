@@ -193,7 +193,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}"
     implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
     implementation "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle}"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}"
+    annotationProcessor "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle}"
 
     //WorkManager
     implementation "android.arch.work:work-runtime:${versions.work_manager}"

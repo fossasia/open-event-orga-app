@@ -226,7 +226,7 @@ dependencies {
     implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.1'
 
     // Fast Adapter
-    implementation "com.mikepenz:fastadapter:4.1.2"
+    implementation "com.mikepenz:fastadapter:5.4.1"
     implementation 'com.timehop.stickyheadersrecyclerview:library:0.4.3'
     implementation 'me.xdrop:fuzzywuzzy:1.1.9'
 

@@ -1,0 +1,41 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "21:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.diffplug.gradle.spotless
+    versions:
+    - 5.10.0
+    - 5.10.1
+    - 5.10.2
+    - 5.11.0
+    - 5.11.1
+    - 5.12.0
+    - 5.12.1
+    - 5.9.0
+  - dependency-name: com.mikepenz:fastadapter
+    versions:
+    - 5.3.2
+    - 5.3.5
+    - 5.4.0
+  - dependency-name: net.ltgt.gradle:gradle-errorprone-plugin
+    versions:
+    - 2.0.0
+  - dependency-name: com.google.android.material:material
+    versions:
+    - 1.3.0
+    - 1.3.0-rc01
+    - 1.4.0-alpha01
+  - dependency-name: org.json:json
+    versions:
+    - "20201115"
+  - dependency-name: com.android.tools.build:gradle
+    versions:
+    - 4.1.2
+  - dependency-name: org.mockito:mockito-inline
+    versions:
+    - 3.7.7

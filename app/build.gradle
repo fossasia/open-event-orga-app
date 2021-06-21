@@ -298,7 +298,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-core-utils'
     })
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.mockito:mockito-inline:3.6.0'
+    testImplementation 'org.mockito:mockito-inline:3.11.2'
     testImplementation 'org.json:json:20180130'
     testImplementation "org.robolectric:robolectric:${versions.roboelectric}"
     testImplementation "org.robolectric:shadows-multidex:${versions.roboelectric}"

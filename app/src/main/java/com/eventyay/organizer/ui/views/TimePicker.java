@@ -8,8 +8,16 @@ import android.util.AttributeSet;
 import com.eventyay.organizer.data.event.serializer.ObservableString;
 import com.eventyay.organizer.utils.DateUtils;
 
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.LocalTime;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class TimePicker extends AbstractDateTimePicker {
     public TimePicker(Context context) {
@@ -30,10 +38,24 @@ public class TimePicker extends AbstractDateTimePicker {
             observableValue.set(value);
             String format = DateUtils.FORMAT_24H;
 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date date = null;
+            try {
+                date = dateFormat.parse(value);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH)+1;
+            int day = calendar.get(Calendar.DATE);
+
             bindTemporal(value, format, zonedDateTime ->
                 new TimePickerDialog(this.getContext(), (picker, hourOfDay, minute) ->
                     setPickedDate(
-                        LocalDateTime.of(zonedDateTime.toLocalDate(), LocalTime.of(hourOfDay, minute)), format),
+                        LocalDateTime.of(LocalDate.of(year,month,day), LocalTime.of(hourOfDay, minute)), format),
                     zonedDateTime.getHour(), zonedDateTime.getMinute(), true));
         }
     }

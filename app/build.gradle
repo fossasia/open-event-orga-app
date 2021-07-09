@@ -170,7 +170,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.2.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "com.google.android.material:material:1.2.0-beta01"
+    implementation "com.google.android.material:material:1.5.0-alpha01"
     implementation "androidx.browser:browser:1.2.0"
     implementation "androidx.palette:palette:1.0.0"
     implementation "com.takisoft.fix:preference-v7:${versions.support_lib}.0"
